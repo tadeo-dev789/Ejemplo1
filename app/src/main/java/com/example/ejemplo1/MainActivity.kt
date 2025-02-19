@@ -3,21 +3,35 @@ package com.example.ejemplo1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
+
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.Alignment
+
 
 import com.example.ejemplo1.ui.theme.Ejemplo1Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             Ejemplo1Theme {
                     Content()
@@ -29,17 +43,65 @@ class MainActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun Content(){
-    Text(
-        text = "Hola Jetpack Compose",
-        color = Color.Red,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
+fun Content() {
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Imagen()
+        TextFieldInput()
+        TextFieldInput2()
+        BotonCalcular()
+    }
+}
+
+@Composable
+fun Imagen(){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.25f) // Ocupa 1/4 de la altura de la pantalla
+
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.utiles),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize() // Se ajusta al tamaño del Box
+        )
+    }
+}
+
+@Composable
+fun TextFieldInput(){
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    TextField(
+        value = text,
+        label = { Text(text = "Valor 1") },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        onValueChange = {},
+        placeholder = { Text(text = "Ingresa el valor 1") },
     )
-    /**Modificadores
-     * De posicicionamiento = width, height, top, buttom, start, end
-     * De funcionalidad = click, scroll
-     * De apariencia = background, padding, border
-     */
+}
+
+@Composable
+fun TextFieldInput2(){
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    TextField(
+        value = text,
+        label = { Text(text = "Valor 2") },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        onValueChange = {},
+        placeholder = { Text(text = "Ingresa el valor 2") },
+    )
+}
+
+@Composable
+fun BotonCalcular(){
+    Button(onClick = {}){
+        Text(text = "Calcular")
+    }
 }
