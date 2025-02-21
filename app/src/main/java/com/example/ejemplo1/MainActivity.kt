@@ -48,7 +48,7 @@ fun Content() {
                 .fillMaxHeight(0.25f) // Ocupa 1/4 de la altura de la pantalla
         ) {
             Image(
-                painter = painterResource(id = R.drawable.utiles),
+                painter = painterResource(id = R.drawable.julioregalado),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -68,23 +68,23 @@ fun Content() {
         TextField(
             value = valor2,
             onValueChange = { valor2 = it },
-            label = { Text(text = "Valor 2") },
+            label = { Text(text = "Descuento") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            placeholder = { Text(text = "Ingresa el valor 2") }
+            placeholder = { Text(text = "Ingresa el valor para descuento") }
         )
 
         // Botón para calcular
         Button(onClick = {
             val num1 = valor1.text.toDoubleOrNull() ?: 0.0
             val num2 = valor2.text.toDoubleOrNull() ?: 0.0
-            resultado = (num1 + num2).toString()
+            resultado = (num1-(num1*num2/100)).toString()
         }) {
             Text(text = "Calcular")
         }
 
         // Mostrar resultado
         if (resultado.isNotEmpty()) {
-            Text(text = "Resultado: $resultado", style = MaterialTheme.typography.bodyLarge)
+            Text(text = "Usted va a pagar: $resultado", style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
