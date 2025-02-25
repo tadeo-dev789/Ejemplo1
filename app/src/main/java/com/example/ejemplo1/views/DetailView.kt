@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.ejemplo1.components.ActionButton
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -29,6 +30,9 @@ fun DetailVIew(){
                     containerColor = Color.Blue
                 )
             )
+        },
+        floatingActionButton ={
+            ActionButton(color = Color.Blue)
         }
     ) {
         ContentView()
@@ -43,5 +47,6 @@ private fun ContentView(){
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(text = "Detail View")
+        TitleView("HOME")
     }
 }
