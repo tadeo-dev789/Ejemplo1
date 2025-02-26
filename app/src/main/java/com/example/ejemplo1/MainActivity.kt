@@ -13,7 +13,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
 import com.example.ejemplo1.ui.theme.Ejemplo1Theme
-import com.example.ejemplo1.views.DetailVIew
+import com.example.ejemplo1.views.DetailView
+
 import com.example.ejemplo1.views.HomeView
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HomeView()
+            DetailView()
         }
     }
 
