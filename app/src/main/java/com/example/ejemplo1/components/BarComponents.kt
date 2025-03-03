@@ -7,6 +7,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.sp
 
 @Composable
@@ -23,5 +24,13 @@ fun ActionButton(color: Color){
         contentColor = Color.White
     ) {
         Icon(Icons.Filled.Add, contentDescription = "Add")
+    }
+}
+
+@Composable
+fun MainIconButton(icon: ImageVector, onClick: () -> Unit){
+    FloatingActionButton(onClick = onClick,
+        containerColor = Color.Blue) {
+        Icon(icon, contentDescription = null,tint = Color.White)
     }
 }
